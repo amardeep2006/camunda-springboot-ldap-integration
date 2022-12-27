@@ -9,11 +9,6 @@ Securing Camunda webapps and REST API via LDAP users
 
 1. Install OpenLDAP and configure. I have provided screenshots for LDAP config in this page only.
 2. Review the configuration in application.yaml and make changes if required.
-3. Run below command to start the project 
-
-    ``./mvnw clean package``
-
-    ``./mvnw spring-boot:run``
 
 ### How to install and configure OpenLDAP on Windows
 
@@ -45,4 +40,26 @@ Details of Individual user :
 #### Group :
 
 ![img_2.png](img_2.png)
+
+
+### Run below command to start the project
+
+   ``./mvnw clean package``
+
+   ``./mvnw spring-boot:run``
+   
+Open your favorite browser and open the below URL to test
+
+http://localhost:8080
+
+
+## Bonus Content : How to configure it for Microsoft Active Directory 
+
+I have added sample configuration file for MS AD , please refer that.
+
+
+
+## Dockerization and passing environment variables via ENV
+
+TODO : WIP
 
