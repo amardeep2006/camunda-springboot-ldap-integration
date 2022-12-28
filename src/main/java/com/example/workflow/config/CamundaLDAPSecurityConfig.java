@@ -71,7 +71,7 @@ public class CamundaLDAPSecurityConfig {
         plugin.setGroupNameAttribute("cn");
         plugin.setGroupTypeAttribute("");
         plugin.setGroupMemberAttribute("member");
-//        plugin.setUseSsl(false);
+        plugin.setSortControlSupported(Boolean.parseBoolean(env.getProperty("ldap.sortControlSupported")));
         plugin.setAuthorizationCheckEnabled(Boolean.parseBoolean(env.getProperty("ldap.authorizationCheckEnabled")));
         return plugin;
     }

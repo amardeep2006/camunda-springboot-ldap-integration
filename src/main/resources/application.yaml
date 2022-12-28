@@ -29,4 +29,5 @@ ldap:
 # You may want to restrict Group search to certain Groups only. I am searching groups starting with keyword camunda
 # Multiple groups can also be configured using AND/OR conditions. For Microsoft AD slight change may be required. objectclass=group
   group.search.filter: ((objectclass=groupOfNames)(cn=camunda*))
+  sortControlSupported: false
   authorizationCheckEnabled: true
