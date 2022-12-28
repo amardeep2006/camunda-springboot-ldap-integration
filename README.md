@@ -62,5 +62,14 @@ application.yaml-MDADexample is provided for reference.
 
 ## Dockerization and passing environment variables via ENV
 
-TODO : WIP
+1. Build the Docker image by following command in project root directory.
 
+``docker build -t cambootldap .``
+
+2. Make changes in ``application-openldap.env``  environment file.
+
+I have given Spring boot equivalent of each environment variable in the application-openldap.env file.  
+
+3. Run the Docker image using following command
+
+``docker run -d -p 8080:8080 --env-file application-openldap.env --name camunda-container cambootldap``
