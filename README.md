@@ -21,6 +21,8 @@ Securing Camunda webapps and REST API via LDAP users
    ii. Add below line in the end of file
 
    ``overlay memberof``
+   
+   iii. Restart the OpenLDAP service in Windows
 
 ![img_3.png](src/img/img_3.png)
 
