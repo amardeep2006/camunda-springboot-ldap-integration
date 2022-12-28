@@ -57,6 +57,7 @@ http://localhost:8080
 
 I have added sample configuration file for MS AD , please refer that.
 
+application.yaml-MDADexample is provided for reference.
 
 
 ## Dockerization and passing environment variables via ENV
