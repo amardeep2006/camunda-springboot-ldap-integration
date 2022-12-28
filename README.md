@@ -22,7 +22,7 @@ Securing Camunda webapps and REST API via LDAP users
 
    ``overlay memberof``
 
-![img_3.png](img_3.png)
+![img_3.png](src/img/img_3.png)
 
 4. Install Apache Directory Studio and use the same for creating at least two People and Two Groups. I am sharing screenshots using Apache Studio for reference.
 
@@ -30,16 +30,16 @@ Securing Camunda webapps and REST API via LDAP users
 
 #### People : 
 
-![img.png](img.png)
+![img.png](src/img/img.png)
 
 Details of Individual user :
 
-![img_1.png](img_1.png)
+![img_1.png](src/img/img_1.png)
 
 
 #### Group :
 
-![img_2.png](img_2.png)
+![img_2.png](src/img/img_2.png)
 
 
 ### Run below command to start the project
