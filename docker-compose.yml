@@ -35,6 +35,9 @@ services:
       <<: *app-credentials
     depends_on:
       - openldap
+    build:
+      context: .
+      dockerfile: Dockerfile
   openldap:
     image: osixia/openldap:1.5.0
     restart: unless-stopped

@@ -75,3 +75,18 @@ I have given Spring boot equivalent of each environment variable in the applicat
 3. Run the Docker image using following command
 
 ``docker run -d -p 8080:8080 --env-file application-openldap.env --name camunda-container cambootldap``
+
+
+## Docker-compose for building and running it with OpenLDAP
+
+To Build the Docker Image
+
+``docker-compose build``
+
+To Run the Docker
+
+``docker-compose --env-file application-openldap.env up -d``
+
+Once Up, open http://localhost:8080 and provide this credential 
+
+``amar-deep-singh:camunda``
