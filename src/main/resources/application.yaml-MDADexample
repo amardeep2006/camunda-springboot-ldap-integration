@@ -28,3 +28,5 @@ ldap:
   group.search.filter: ((objectclass=group)(cn=MAXCRC-ADGrp_Camunda*))
   sortControlSupported: false
   authorizationCheckEnabled: true
+  group.search.groupMember.attribute: member
+  usePosixGroups: false

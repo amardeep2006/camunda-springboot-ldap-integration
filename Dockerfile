@@ -22,7 +22,7 @@ RUN cd /camunda \
     && ./mvnw clean package
 
 # Main Docker image building
-FROM ubuntu:20.04 as builder
+FROM ubuntu:20.04
 
 ARG VERSION=7.18.0
 ENV CAMUNDA_VERSION=7.18.0

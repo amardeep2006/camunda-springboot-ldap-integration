@@ -13,12 +13,12 @@ ldap:
   server.uri: ldap://localhost:389
   acceptUntrustedCertificates: false
   #  Manager DN to make LDAP queries. In case of enterprise (MS Active Directory) it will be a Service account
-  manager.dn: cn=Manager,dc=maxcrc,dc=com
+  manager.dn: cn=Manager,dc=example,dc=com
   manager.password: secret
-  search.base.dn: dc=maxcrc,dc=com
+  search.base.dn: dc=example,dc=com
   user.search.base:
   # We want to search selected groups only. We don't want to list entire LDAP directory. Bad example (objectclass=person) may list entire user base in ldap
-  user.search.filter: (|(memberOf=CN=camunda-webapps-admins,ou=Groups,dc=maxcrc,dc=com)(memberOf=CN=camunda-webapps-users,ou=Groups,dc=maxcrc,dc=com))
+  user.search.filter: (|(memberOf=CN=camunda-webapps-admins,ou=Groups,dc=example,dc=com)(memberOf=CN=camunda-webapps-users,ou=Groups,dc=example,dc=com))
   # In case of Microsoft Active Directory id attribute will be: sAMAccountName
   user.id.attribute: uid
   user.firstName.Attribute: givenName
@@ -31,3 +31,6 @@ ldap:
   group.search.filter: ((objectclass=groupOfNames)(cn=camunda*))
   sortControlSupported: false
   authorizationCheckEnabled: true
+#  Depending on OpenLDAP setup , it may be member OR uniqueMember
+  group.search.groupMember.attribute: member
+  usePosixGroups: false

@@ -70,7 +70,8 @@ public class CamundaLDAPSecurityConfig {
         plugin.setGroupIdAttribute("cn");
         plugin.setGroupNameAttribute("cn");
         plugin.setGroupTypeAttribute("");
-        plugin.setGroupMemberAttribute("member");
+        plugin.setGroupMemberAttribute(env.getProperty("ldap.group.search.groupMember.attribute"));
+        plugin.setUsePosixGroups(Boolean.parseBoolean(env.getProperty("ldap.usePosixGroups")));
         plugin.setSortControlSupported(Boolean.parseBoolean(env.getProperty("ldap.sortControlSupported")));
         plugin.setAuthorizationCheckEnabled(Boolean.parseBoolean(env.getProperty("ldap.authorizationCheckEnabled")));
         return plugin;

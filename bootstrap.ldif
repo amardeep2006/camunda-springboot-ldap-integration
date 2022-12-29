@@ -1,0 +1,56 @@
+dn: ou=People,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: People
+description: Container for user entries
+
+dn: cn=amar-deep-singh,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: amar-deep-singh
+sn: Singh
+givenName: Amar Deep
+mail: amar.deep.singh@maxcrc.com
+uid: amar-deep-singh
+userPassword: camunda
+
+dn: cn=kamal-jeet-singh,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: kamal-jeet-singh
+sn: Singh
+givenName: Kamal Jeet
+mail: kamal.jeet.singh@maxcrc.com
+uid: kamal-jeet-singh
+userPassword: camunda
+
+dn: cn=mp-sharma,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: mp-sharma
+sn: Sharma
+uid: mp-sharma
+
+dn: ou=Groups,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: Groups
+description: Container for Group entries
+
+dn: cn=camunda-webapps-users,ou=Groups,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: camunda-webapps-users
+uniqueMember: cn=kamal-jeet-singh,ou=People,dc=example,dc=org
+
+dn: cn=camunda-webapps-admins,ou=Groups,dc=example,dc=org
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: camunda-webapps-admins
+uniqueMember: cn=amar-deep-singh,ou=People,dc=example,dc=org
