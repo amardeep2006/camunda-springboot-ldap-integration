@@ -44,7 +44,7 @@ public class CamundaLDAPSecurityConfig {
         /* ldap.camunda.admin.group.name Property must exist in LDAP as this is created
          in Camunda database while bootstrapping, All users from this group will be Admin by default */
         plugin.setAdministratorGroupName(env.getProperty("ldap.camunda.webapps.admin.group.name"));
-        //plugin.setAdministratorUserName("your-login-id"); // In case you want to make single user as Admin, instead of group
+        plugin.setAdministratorUserName(env.getProperty("ldap.camunda.admin.user")); // In case you want to make single user as Admin
         return plugin;
     }
 

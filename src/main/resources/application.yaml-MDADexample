@@ -9,6 +9,7 @@ ldap:
   auth.enabled: true
   # Set Admin Group while Bootstrapping for Webapps
   camunda.webapps.admin.group.name: MAXCRC-ADGrp_Camunda-Admins-S-G
+  camunda.admin.user:
   server.uri: ldap://localhost:389
   acceptUntrustedCertificates: true
   #  Manager DN will be service account in case of Enterprise

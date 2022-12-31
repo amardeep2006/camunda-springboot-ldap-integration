@@ -9,6 +9,7 @@ ldap:
   auth.enabled: true
   # Set Admin Group while Bootstrapping for Webapps (Group Must exist in LDAP)
   camunda.webapps.admin.group.name: camunda-webapps-admins
+  camunda.admin.user:
   #  LDAP Server URL
   server.uri: ldap://localhost:389
   acceptUntrustedCertificates: false
