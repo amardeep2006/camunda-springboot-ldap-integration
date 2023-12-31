@@ -25,4 +25,4 @@ fi
 
 # Start the Camunda SpringBoot UBER jar
 
-java $JAVA_OPTS -jar camunda-ldap-project-1.0.0-SNAPSHOT.jar
+java $JAVA_OPTS -jar camunda-ldap-project-core.jar

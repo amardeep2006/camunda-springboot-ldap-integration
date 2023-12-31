@@ -1,51 +1,49 @@
 version: "3.4"
 
-x-app-credentials: &app-credentials
-  SPRING_DATASOURCE_URL: "${SPRING_DATASOURCE_URL}"
-  CAMUNDA_BPM_AUTHORIZATION_ENABLED: "${CAMUNDA_BPM_AUTHORIZATION_ENABLED}"
-  LDAP_AUTH_ENABLED: "${LDAP_AUTH_ENABLED}"
-  LDAP_CAMUNDA_WEBAPPS_ADMIN_GROUP_NAME: "${LDAP_CAMUNDA_WEBAPPS_ADMIN_GROUP_NAME}"
-  LDAP_CAMUNDA_ADMIN_USER: "${LDAP_CAMUNDA_ADMIN_USER}"
-  LDAP_SERVER_URI: "${LDAP_SERVER_URI}"
-  LDAP_ACCEPTUNTRUSTEDCERTIFICATES: "${LDAP_ACCEPTUNTRUSTEDCERTIFICATES}"
-  LDAP_MANAGER_DN: "${LDAP_MANAGER_DN}"
-  LDAP_MANAGER_PASSWORD: "${LDAP_MANAGER_PASSWORD}"
-  LDAP_SEARCH_BASE_DN: "${LDAP_SEARCH_BASE_DN}"
-  LDAP_USER_SEARCH_BASE: "${LDAP_USER_SEARCH_BASE}"
-  LDAP_USER_SEARCH_FILTER: "${LDAP_USER_SEARCH_FILTER}"
-  LDAP_USER_ID_ATTRIBUTE: "${LDAP_USER_ID_ATTRIBUTE}"
-  LDAP_USER_FIRSTNAME_ATTRIBUTE: "${LDAP_USER_FIRSTNAME_ATTRIBUTE}"
-  LDAP_USER_LASTNAME_ATTRIBUTE: "${LDAP_USER_LASTNAME_ATTRIBUTE}"
-  LDAP_USER_EMAIL_ATTRIBUTE: "${LDAP_USER_EMAIL_ATTRIBUTE}"
-  LDAP_USER_PASSWORD_ATTRIBUTE: "${LDAP_USER_PASSWORD_ATTRIBUTE}"
-  LDAP_GROUP_SEARCH_BASE: "${LDAP_GROUP_SEARCH_BASE}"
-  LDAP_GROUP_SEARCH_FILTER: "${LDAP_GROUP_SEARCH_FILTER}"
-  LDAP_SORTCONTROLSUPPORTED: "${LDAP_SORTCONTROLSUPPORTED}"
-  LDAP_AUTHORIZATIONCHECKENABLED: "${LDAP_AUTHORIZATIONCHECKENABLED}"
-  LDAP_GROUP_SEARCH_GROUPMEMBER_ATTRIBUTE: "${LDAP_GROUP_SEARCH_GROUPMEMBER_ATTRIBUTE}"
-
 services:
   camunda-api:
     restart: always
-    image: "cambootldap:latest"
     expose:
       - "8080"
     ports:
       - "8080:8080"
     environment:
-      <<: *app-credentials
+      SPRING_DATASOURCE_URL:
+      CAMUNDA_BPM_AUTHORIZATION_ENABLED: true
+      LDAP_AUTH_ENABLED: true
+      LDAP_CAMUNDA_WEBAPPS_ADMIN_GROUP_NAME: admins
+      LDAP_CAMUNDA_ADMIN_USER: camunda
+      LDAP_SERVER_URI: "ldap://openldap:1389"
+      LDAP_ACCEPTUNTRUSTEDCERTIFICATES: false
+      LDAP_MANAGER_DN: uid=camunda,cn=users,dc=example,dc=org
+      LDAP_MANAGER_PASSWORD: camunda
+      LDAP_SEARCH_BASE_DN: dc=example,dc=org
+      LDAP_USER_SEARCH_BASE:
+      LDAP_USER_SEARCH_FILTER: (objectclass=person)
+      LDAP_USER_ID_ATTRIBUTE: uid
+      LDAP_USER_FIRSTNAME_ATTRIBUTE: givenName
+      LDAP_USER_LASTNAME_ATTRIBUTE: sn
+      LDAP_USER_EMAIL_ATTRIBUTE: mail
+      LDAP_USER_PASSWORD_ATTRIBUTE: userPassword
+      LDAP_GROUP_SEARCH_BASE:
+      LDAP_GROUP_SEARCH_FILTER: (objectclass=groupOfNames)
+      LDAP_SORTCONTROLSUPPORTED: false
+      LDAP_AUTHORIZATIONCHECKENABLED: true
+      LDAP_GROUP_SEARCH_GROUPMEMBER_ATTRIBUTE: member
     depends_on:
       - openldap
     build:
       context: .
       dockerfile: Dockerfile
   openldap:
-    image: osixia/openldap:1.5.0
-    restart: unless-stopped
+    build:
+      context: ./ldap
+      dockerfile: Dockerfile
+    restart: always
     ports:
       - 389:389
-    volumes:
-      - type: bind
-        source: ./bootstrap.ldif
-        target: /container/service/slapd/assets/config/bootstrap/ldif/50-bootstrap.ldif
-    command: --copy-service
+      - 1389:1389
+      - 1636:1636
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=adminpassword
