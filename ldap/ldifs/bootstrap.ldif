@@ -1,0 +1,81 @@
+# Generated LDIF file
+
+# root entry
+dn: dc=example,dc=org
+objectClass: dcObject
+objectClass: organization
+dc: example
+o: "Example Organisation"
+
+# users, as organizational unit
+dn: ou=users,dc=example,dc=org
+objectClass: organizationalUnit
+ou: users
+
+# groups, as organizational unit
+dn: ou=groups,dc=example,dc=org
+objectClass: organizationalUnit
+ou: groups
+
+dn: cn=users,dc=example,dc=org
+objectClass: groupOfNames
+cn: users
+member: uid=camunda,cn=users,dc=example,dc=org
+member: uid=steves,cn=users,dc=example,dc=org
+member: uid=william,cn=users,dc=example,dc=org
+member: uid=lucy,cn=users,dc=example,dc=org
+description: some users description
+
+dn: cn=admins,dc=example,dc=org
+objectClass: groupOfNames
+cn: admins
+member: uid=camunda,cn=users,dc=example,dc=org
+member: uid=steves,cn=users,dc=example,dc=org
+
+dn: cn=viewers,dc=example,dc=org
+objectClass: groupOfNames
+cn: viewers
+member: uid=camunda,cn=users,dc=example,dc=org
+member: uid=steves,cn=users,dc=example,dc=org
+member: uid=william,cn=users,dc=example,dc=org
+member: uid=lucy,cn=users,dc=example,dc=org
+
+dn: uid=camunda,cn=users,dc=example,dc=org
+uid: camunda
+mail: camunda@example.org
+userPassword: camunda
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: person
+sn: Camunda
+cn: Camunda
+
+dn: uid=steves,cn=users,dc=example,dc=org
+uid: steves
+mail: steves@example.org
+userPassword: steves
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: person
+sn: Steves
+cn: Steves
+
+dn: uid=william,cn=users,dc=example,dc=org
+userPassword: william
+uid: william
+mail: william@example.org
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: person
+sn: William
+cn: William
+
+dn: uid=lucy,cn=users,dc=example,dc=org
+userPassword: lucy
+uid: lucy
+mail: lucy@example.org
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: person
+sn: Lucy
+cn: Lucy
