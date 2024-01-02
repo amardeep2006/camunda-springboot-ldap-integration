@@ -55,3 +55,13 @@ spring:
       profiles:
         active: "openldap" # Set default profile
 ```
+
+I am using springboot relaxed binding for overriding the configs from application.yml on runtime via springboot relaxed binding.
+
+https://docs.spring.io/spring-boot/docs/3.2.1/reference/htmlsingle/#features.external-config
+
+example :
+
+ldap.server.uri: ldap://localhost:1389 is overriden by OS env variable 
+
+LDAP_SERVER_URI: "ldap://openldap:1389"
