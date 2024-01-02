@@ -2,6 +2,9 @@ spring:
   docker:
     compose:
       enabled: true # Set false for production environments where you have LDAP already running
+      profiles:
+        active: "openldap" # Set default profile
+
 spring.datasource.url: jdbc:h2:file:./camunda-h2-database
 
 camunda.bpm:
@@ -19,7 +22,7 @@ ldap:
   acceptUntrustedCertificates: false
   #  Manager DN to make LDAP queries. In case of enterprise (MS Active Directory) it will be a Service account
   manager.dn: uid=camunda,cn=users,dc=example,dc=org
-  manager.password: camunda
+  manager.password: camunda123!
   search.base.dn: dc=example,dc=org
   user.search.base:
   # We want to search selected groups only. We don't want to list entire LDAP directory. Bad example (objectclass=person) may list entire user base in ldap

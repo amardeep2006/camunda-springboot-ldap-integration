@@ -43,7 +43,7 @@ member: uid=lucy,cn=users,dc=example,dc=org
 dn: uid=camunda,cn=users,dc=example,dc=org
 uid: camunda
 mail: camunda@example.org
-userPassword: camunda
+userPassword: camunda123!
 objectClass: inetOrgPerson
 objectClass: top
 objectClass: person
