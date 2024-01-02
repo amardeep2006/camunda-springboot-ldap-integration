@@ -2,11 +2,18 @@ version: "3.4"
 
 services:
   camunda-api:
+    profiles:
+      - "runcontainers"
     restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
     expose:
       - "8080"
     ports:
       - "8080:8080"
+    labels:
+      org.springframework.boot.ignore: true
     environment:
       SPRING_DATASOURCE_URL:
       CAMUNDA_BPM_AUTHORIZATION_ENABLED: true
@@ -32,18 +39,13 @@ services:
       LDAP_GROUP_SEARCH_GROUPMEMBER_ATTRIBUTE: member
     depends_on:
       - openldap
-    build:
-      context: .
-      dockerfile: Dockerfile
   openldap:
     build:
-      context: ./ldap
+      context: /ldap
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 389:389
       - 1389:1389
-      - 1636:1636
     environment:
       - LDAP_ADMIN_USERNAME=admin
       - LDAP_ADMIN_PASSWORD=adminpassword
