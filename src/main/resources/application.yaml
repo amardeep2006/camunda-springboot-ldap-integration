@@ -1,3 +1,7 @@
+spring:
+  docker:
+    compose:
+      enabled: true # Set false for production environments where you have LDAP already running
 spring.datasource.url: jdbc:h2:file:./camunda-h2-database
 
 camunda.bpm:
@@ -16,10 +20,10 @@ ldap:
   #  Manager DN to make LDAP queries. In case of enterprise (MS Active Directory) it will be a Service account
   manager.dn: uid=camunda,cn=users,dc=example,dc=org
   manager.password: camunda
-  search.base.dn: dc=example,dc=com
+  search.base.dn: dc=example,dc=org
   user.search.base:
   # We want to search selected groups only. We don't want to list entire LDAP directory. Bad example (objectclass=person) may list entire user base in ldap
-  user.search.filter:
+  user.search.filter: (objectclass=person)
   # In case of Microsoft Active Directory id attribute will be: sAMAccountName
   user.id.attribute: uid
   user.firstName.Attribute: givenName
@@ -29,7 +33,7 @@ ldap:
   group.search.base:
 # You may want to restrict Group search to certain Groups only. I am searching groups starting with keyword camunda
 # Multiple groups can also be configured using AND/OR conditions. For Microsoft AD slight change may be required. objectclass=group
-  group.search.filter:
+  group.search.filter: (objectclass=groupOfNames)
   sortControlSupported: false
   authorizationCheckEnabled: true
 #  Depending on OpenLDAP setup , it may be member OR uniqueMember
