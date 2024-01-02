@@ -1,21 +1,22 @@
 # camunda-springboot-ldap-integration
-Securing Camunda webapps and REST API via LDAP users
+Securing Camunda webapps and REST API via LDAP users .
+
+This is based on Camunda 7.20 and Springboot 3.2.1
 
 ## Prerequisites
 * Java 17
 * Docker
 * Docker Compose
 
-### How to run locally with OpenLDAP 
+### How to run locally with OpenLDAP via Docker Compose
 
-This will build and start both camunda containers and openldap. Also set en variables for openldap
+Clone the repo and running below command will build and start both camunda containers and openldap. Also set en variables for openldap
 
 `docker compose --profile openldap --profile buildcamunda up -d`
 
-
 ### How to run locally with Active Directory
 
-This will build and start both camunda containers and AD . Also set en variables for Active directory
+This will build and start both camunda containers and AD. Also set en variables for Active directory
 
 `docker compose --profile activedirectory up -d`
 
@@ -33,7 +34,7 @@ Password: camunda123!
 
 ### Running application via IDE such as IntelliJIdea
 
-I am using following plugin to start the openldap docker container
+I am using following springboot plugin introduced in version 3.1 to start the openldap docker container
 
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.docker-compose
 
