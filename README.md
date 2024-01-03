@@ -1,7 +1,7 @@
 # camunda-springboot-ldap-integration
 Securing Camunda webapps and REST API via LDAP users .
 
-This is based on Camunda 7.20 and Springboot 3.2.1
+This is based on Camunda 7.20 and Springboot 3.1.x
 
 ## Prerequisites
 * Java 17
