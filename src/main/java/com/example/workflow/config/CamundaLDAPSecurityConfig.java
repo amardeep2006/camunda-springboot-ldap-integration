@@ -19,7 +19,6 @@ public class CamundaLDAPSecurityConfig {
     private Environment env;
 
     @Bean
-    @ConditionalOnProperty(name = "enabled", havingValue = "true", prefix = "ldap.auth")
     public FilterRegistrationBean<ProcessEngineAuthenticationFilter> processEngineAuthenticationFilter()
     {
         FilterRegistrationBean<ProcessEngineAuthenticationFilter> registration = new FilterRegistrationBean<>();
@@ -31,7 +30,6 @@ public class CamundaLDAPSecurityConfig {
         return registration;
     }
     @Bean
-    @ConditionalOnProperty(name = "enabled", havingValue = "true", prefix = "ldap.auth")
     public ProcessEngineAuthenticationFilter getProcessEngineAuthenticationFilter()
     {
         return new ProcessEngineAuthenticationFilter();
