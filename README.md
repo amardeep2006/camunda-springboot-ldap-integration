@@ -58,6 +58,8 @@ spring:
 
 I am using springboot relaxed binding for overriding the configs from application.yml on runtime via springboot relaxed binding.
 
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables
+
 https://docs.spring.io/spring-boot/docs/3.2.1/reference/htmlsingle/#features.external-config
 
 example :
