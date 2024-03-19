@@ -17,4 +17,4 @@ updates:
     allow:
       - dependency-name: "org.springframework.boot"
         dependency-type: "direct"
-        update-types: ["version-update:semver-patch"]        
+      - update-types: ["version-update:semver-patch"]        
